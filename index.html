@@ -14,7 +14,7 @@
   <link rel="shortcut icon" href="images/favicon.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="css/styles.css">
-<script src="js/scripts.js"></script>
+
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -24,37 +24,147 @@
   <header>
     <h1>Menu App</h1>
   </header>
-  <div>
-<div>
-<a href='#' id>View all Items</a>
-</div>
-<div>
-<a href = '#' >Add an Item</a>
-</div>
-</div>
-<div id = 'js-view-section'>
-<h2>Our Menu</h2>
+
+  <!---navgation tabs--->
+  <div class = 'navigation'>
+        <div>
+          <a href='#' id="view-all-items" class = 'selected'>View all Items</a>
+        </div>
+        <div>
+          <a href = '#' id='add-an-item'>Add an Item</a>
+        </div>
+  </div>
+
+  <!---view items section--->
+<div id = 'view-section'>
+    <h2>Our Menu</h2>
+      <h3> Appetizers </h3>
+    <table>
+      <thead>
+        <tr class="table-title-row">
+          <th>Item</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Healthy Choice?</th>
+          <th>Edit/Delete</th>
+        </tr>
+      </thead>
+      <tbody id="appetizers">
+      </tbody>
+    </table>
+
+    <h3> Entrees </h3>
   <table>
+    <thead>
+      <tr class="table-title-row">
+        <th>Item</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Healthy Choice?</th>
+        <th>Edit/Delete</th>
+      </tr>
+    </thead>
+    <tbody id="entrees">
+    </tbody>
   </table>
+
+  <h3> Desserts </h3>
+<table>
+  <thead>
+    <tr class="table-title-row">
+      <th>Item</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Healthy Choice?</th>
+      <th>Edit/Delete</th>
+    </tr>
+  </thead>
+  <tbody id="desserts">
+  </tbody>
+</table>
+
+<h3> Beverages </h3>
+<table>
+<thead>
+  <tr class="table-title-row">
+    <th>Item</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Healthy Choice?</th>
+    <th>Edit/Delete</th>
+  </tr>
+</thead>
+<tbody id="drinks">
+</tbody>
+</table>
+
+
 </div>
-<div id = "js-add-section">
+
+  <!---add items section--->
+<div id = "add-section" class = 'hidden'>
   <h2>Menu Item</h2>
-  <form>
+  <form id = "add-item-form">
+    <label for="Category">Category:</label>
+    <select  id = "category" required>
+  <option value="appetizers">Appetizer</option>
+  <option value="entrees">Entree</option>
+  <option value="dessert">Dessert</option>
+  <option value="drinks">Beverage</option>
+</select>
     <label for="item">Item:</label>
 <input type="text" name="item" id="item" required><br>
 <label for="description">Description:</label>
 <input type="text" name="description" id="description" required><br>
-<label for="prics">Price:</label>
+<label for="price">Price:</label>
 <input type="number" name="price" id="price" required><br>
+<label for="healthy">Is this a healthy option?</label>
+<select  id = "healthy" required>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+<br><br>
+<input type="button" value="Add Item" onclick="saveItem()">
 
-
-<input type="checkbox" name="subscribe" id="subscribe">
-<label for="subscribe">Subscribe to newsletter</label>
   </form>
 </div>
 
+
+<!---edit item popup--->
+<div class="popup" data-popup="popup-login">
+  <div class="popup-inner">
+    <h2>Edit Item</h2>
+    <form id = "add-item-form">
+      <label for="Category">Category:</label>
+      <select  id = "category" required>
+    <option value="appetizers">Appetizer</option>
+    <option value="entrees">Entree</option>
+    <option value="dessert">Dessert</option>
+    <option value="drinks">Beverage</option>
+  </select>
+      <label for="item">Item:</label>
+  <input type="text" name="item" id="item" required><br>
+  <label for="description">Description:</label>
+  <input type="text" name="description" id="description" required><br>
+  <label for="price">Price:</label>
+  <input type="number" name="price" id="price" required><br>
+  <label for="healthy">Is this a healthy option?</label>
+  <select  id = "healthy" required>
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+  </select>
+  <br><br>
+  <input type="button" value="Add Item" onclick="saveItem()">
+
+    </form>
+    <a class="popup-close" data-popup-close="popup-login" href=".">x</a>
+  </div>
+</div>
+
+
 <footer>
 </footer>
+<script src="js/scripts.js"></script>
 </body>
 
 </html>
