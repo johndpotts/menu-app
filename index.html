@@ -131,33 +131,8 @@
 
 
 <!---edit item popup--->
-<div class="popup" data-popup="popup-login">
-  <div class="popup-inner">
-    <h2>Edit Item</h2>
-    <form id = "add-item-form">
-      <label for="Category">Category:</label>
-      <select  id = "category" required>
-    <option value="appetizers">Appetizer</option>
-    <option value="entrees">Entree</option>
-    <option value="dessert">Dessert</option>
-    <option value="drinks">Beverage</option>
-  </select>
-      <label for="item">Item:</label>
-  <input type="text" name="item" id="item" required><br>
-  <label for="description">Description:</label>
-  <input type="text" name="description" id="description" required><br>
-  <label for="price">Price:</label>
-  <input type="number" name="price" id="price" required><br>
-  <label for="healthy">Is this a healthy option?</label>
-  <select  id = "healthy" required>
-  <option value="yes">Yes</option>
-  <option value="no">No</option>
-  </select>
-  <br><br>
-  <input type="button" value="Add Item" onclick="saveItem()">
-
-    </form>
-    <a class="popup-close" data-popup-close="popup-login" href=".">x</a>
+<div class="popup hidden" id = 'js-popup-outer' >
+  <div class="popup-inner" id = 'js-popup-inner'>
   </div>
 </div>
 
