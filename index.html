@@ -22,23 +22,23 @@
 
 <body>
   <header>
-    <h1>Menu App</h1>
+    <h1 class="shadow text3">Menu App</h1>
   </header>
 
   <!---navgation tabs--->
   <div class = 'navigation'>
         <div>
-          <a href='#' id="view-all-items" class = 'selected'>View all Items</a>
+          <a href='#' ><span id="view-all-items" class = 'selected'>View all Items</span></a>
         </div>
         <div>
-          <a href = '#' id='add-an-item'>Add an Item</a>
+          <a href = '#'  ><span id='add-an-item'>Add an Item</span></a>
         </div>
   </div>
 
   <!---view items section--->
 <div id = 'view-section'>
-    <h2>Our Menu</h2>
-      <h3> Appetizers </h3>
+    <h2 class="shadow text1" >Our Menu</h2>
+    <p class="script"><span>Appetizers</span></p>
     <table>
       <thead>
         <tr class="table-title-row">
@@ -53,7 +53,7 @@
       </tbody>
     </table>
 
-    <h3> Entrees </h3>
+    <p class="script"><span>Entrees</span></p>
   <table>
     <thead>
       <tr class="table-title-row">
@@ -68,7 +68,7 @@
     </tbody>
   </table>
 
-  <h3> Desserts </h3>
+    <p class="script"><span>Desserts</span></p>
 <table>
   <thead>
     <tr class="table-title-row">
@@ -83,7 +83,7 @@
   </tbody>
 </table>
 
-<h3> Beverages </h3>
+  <p class="script"><span>Beverages</span></p>
 <table>
 <thead>
   <tr class="table-title-row">
@@ -103,8 +103,8 @@
 
   <!---add items section--->
 <div id = "add-section" class = 'hidden'>
-  <h2>Menu Item</h2>
-  <form id = "add-item-form">
+  <h2 class="shadow text1" >Menu Item</h2>
+  <form id = "add-item-form" class="form-style-4">
     <label for="Category">Category:</label>
     <select  id = "category" required>
   <option value="appetizers">Appetizer</option>
@@ -112,12 +112,13 @@
   <option value="dessert">Dessert</option>
   <option value="drinks">Beverage</option>
 </select>
+<br/>
     <label for="item">Item:</label>
 <input type="text" name="item" id="item" required><br>
 <label for="description">Description:</label>
 <input type="text" name="description" id="description" required><br>
 <label for="price">Price:</label>
-<input type="number" name="price" id="price" required><br>
+<input type="text" name="price" id="price" required><br>
 <label for="healthy">Is this a healthy option?</label>
 <select  id = "healthy" required>
 <option value="yes">Yes</option>

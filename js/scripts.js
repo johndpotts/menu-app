@@ -36,61 +36,65 @@ const popupInner = document.getElementById('js-popup-inner');
 var items = [
   {item:"Fish Tacos",
 description: "yummy fish tacos with mango salsa",
-price:"5.00",
+price:"$5",
 healthy: "yes",
 category:"entrees",
 id:1
 },
 {item:"Chips and Hummus",
 description: "fresh baked pita chips with pine nut hummus",
-price:"3.00",
+price:"$3",
 healthy: "yes",
 category:"appetizers",
 id:2
 },
 {item:"Lemon Sorbet",
 description: "a light, soothing citrus explosion",
-price:"2.00",
+price:"$2",
 healthy: "yes",
 category:"dessert",
 id:3
 },
 {item:"White Wine",
 description: "a white wine; goes well with fish tacos!",
-price:"2.00",
+price:"$4",
 healthy: "yes",
 category:"drinks",
 id:4
 },
 {item:"Deep fried grease burgers",
 description: "So good that you can feel your arteries close as you eat it",
-price:"6.00",
+price:"$6",
 healthy: "no",
 category:"entrees",
 id:5
 },
 {item:"Cheese wedge",
 description: "Really just a big hunk of cheese",
-price:"4.00",
+price:"$4",
 healthy: "no",
 category:"appetizers",
 id:6
 },
 {item:"Super Fudge Cake",
 description: "One slice weighs 5 lbs. So good yet so heavy.",
-price:"10.00",
+price:"$10",
 healthy: "no",
 category:"dessert",
 id:7
 },
 {item:"Beer",
 description: "a bland and generic yet highly original craft beer. Only hipsters can taste the difference!",
-price:"3.00",
+price:"$3",
 healthy: "no",
 category:"drinks",
 id:8
 }
 ];
+
+if (localStorage.getItem("menuAppItems") == undefined){
+localStorage.setItem("menuAppItems", JSON.stringify(items));
+};
 
 /*Populate the table when the window loads */
 window.onLoad= getItems();
@@ -98,6 +102,7 @@ window.onLoad= getItems();
 /*using event delegation to assign click handler to section rather than individual links*/
 navigation.addEventListener('click',
 function(event){
+  console.log(event.target);
 if(!event.target.classList.contains('selected')){
 viewAll.classList.toggle("selected");
 addItem.classList.toggle("selected");
@@ -135,6 +140,7 @@ newItem.healthy = itemHealthy.value;
 newItem.category = itemCategory.value;
 newItem.id = items.length+1;
 items.push(newItem);
+localStorage.setItem("menuAppItems", JSON.stringify(items));
 getItems();
 
 /*Clear form values*/
@@ -148,6 +154,7 @@ alert("Your item has been added!")
 
 
 function  getItems() {
+  items = JSON.parse(localStorage.getItem("menuAppItems"));
   /*clear out old values*/
 appetizers.innerText = "";
 entrees.innerText = "";
@@ -193,6 +200,7 @@ function deleteItem(id){
   if(confirm("Do you really want to delete this item?"))
   {items = items.filter(function(a){return a.id != id;});
 }
+localStorage.setItem("menuAppItems", JSON.stringify(items));
   getItems();
 };
 
@@ -204,7 +212,7 @@ var result = items.filter(function(a){return a.id == id;});
   var item = result[0];
 /*dynamically fill out the pop up form*/
   popup.classList.toggle('hidden');
-  popupInner.innerHTML='<h2>Edit Item</h2>  <form id = "edit-item-form">    <label for="Category">Category:</label>    <select  id = "category" class="category-list"required>  <option value="appetizers">Appetizer</option>  <option value="entrees">Entree</option>  <option value="dessert">Dessert</option>  <option value="drinks">Beverage</option></select>    <label for="item">Item:</label><input type="text" name="item" id="item" value = "'+item.item+'" required><br><labelfor="description">Description:</label><input type="text" name="description" value = "'+item.description+'" id="description" required><br><label for="price">Price:</label><input type="number" value = '+item.price+' name="price" id="price" required><br><label for="healthy">Is this a healthy option?</label><select class = "healthy-selector" id = "healthy" required><option value="yes">Yes</option><option value="no">No</option></select><br><br><input type="button"'+
+  popupInner.innerHTML='<h2 class="shadow text1" >Edit Item</h2>  <form id = "edit-item-form" class = "form-style-4">    <label for="Category">Category:</label>    <select  id = "category" class="category-list"required>  <option value="appetizers">Appetizer</option>  <option value="entrees">Entree</option>  <option value="dessert">Dessert</option>  <option value="drinks">Beverage</option></select> <br/>   <label for="item">Item:</label><input type="text" name="item" id="item" value = "'+item.item+'" required><br><label for="description">Description:</label><input type="text" name="description" value = "'+item.description+'" id="description" required><br><label for="price">Price:</label><input type="text" value = '+item.price+' name="price" id="price" required><br><label for="healthy">Is this a healthy option?</label><select class = "healthy-selector" id = "healthy" required><option value="yes">Yes</option><option value="no">No</option></select><br><br><input type="button"'+
    'value="Save Item"onclick="saveEditedItem('+item.id +')"></form><a class="popup-close"onclick="popupClose()" href="#">x</a>'
 
 /*select the right option for category selector*/
@@ -261,6 +269,7 @@ newItem.category = itemCategory.value;
 newItem.id = id;
 
 items.push(newItem);
+localStorage.setItem("menuAppItems", JSON.stringify(items));
 getItems();
   popup.classList.toggle('hidden');
 viewAll.click();
