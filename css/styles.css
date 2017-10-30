@@ -102,7 +102,7 @@ color:#EEEEEE;
 }
 
 table {
-	font-family:Georgia, Helvetica, sans-serif;
+
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 16px;
   color: #EEEEEE;
@@ -180,6 +180,8 @@ table tr:hover td {
 
 }
  button {
+   font-family: Georgia, "Times New Roman", Times, serif;
+   font-size: 16px;
   margin: .5rem auto;
   font-size: 1rem;
   padding: .5rem 1rem;
@@ -333,6 +335,8 @@ table tr:hover td {
 
 .form-style-4 input[type=submit],
 .form-style-4 input[type=button]{
+  font-family: Georgia, "Times New Roman", Times, serif;
+
   margin: .5rem auto;
   font-size: 1rem;
   padding: .5rem 1rem;
@@ -356,7 +360,8 @@ table tr:hover td {
 }
 
 .form-style-4 select {
-  background-color:#222222;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background-color:#222222;
   border: 1px dashed #eeeeee;
   padding: 8px;
   border-radius: 4px;
